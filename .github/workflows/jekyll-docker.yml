@@ -17,6 +17,9 @@ jobs:
       - name: Ensure .nojekyll
         run: touch .nojekyll
 
+      - name: List files for debug
+        run: ls -al
+
       # 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
