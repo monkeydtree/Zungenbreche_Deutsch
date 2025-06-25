@@ -1,4 +1,4 @@
-name: Static Site CI  # 更新名称反映实际功能
+name: Deploy Static Site
 
 on:
   push:
@@ -11,37 +11,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-      
-    # 关键步骤1：禁用Jekyll处理
-    - name: Disable Jekyll processing
-      run: |
-        touch .nojekyll
-        echo "Static site deployment" > .nojekyll
-        
-    # 关键步骤2：跳过Jekyll构建
-    - name: Skip Jekyll build
-      run: |
-        docker run \
-        -v ${{ github.workspace }}:/srv/jekyll \
-        -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c "echo 'Jekyll build skipped by user request'"
-    
-    # 关键步骤3：直接部署静态文件
-    - name: Deploy static files
-      run: |
-        # 创建输出目录
-        mkdir -p ${{ github.workspace }}/_site
-        
-        # 复制所有文件（排除.git等特殊目录）
-        rsync -av --exclude='.git/' --exclude='.github/' \
-              ${{ github.workspace }}/ ${{ github.workspace }}/_site/
-        
-        echo "Static files deployed successfully"
+      - uses: actions/checkout@v4
 
-    # 可选：添加部署到GitHub Pages的步骤
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./_site
+      # 确保 .nojekyll 存在
+      - name: Ensure .nojekyll
+        run: touch .nojekyll
+
+      # 部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
