@@ -227,9 +227,9 @@ SOFTWARE.
 
 **Project2501**
 
-- 📧 邮箱：[your-email@example.com]
+- 📧 邮箱：[monkeydtree@126.com]
 - 🌐 网站：[your-website.com]
-- 💼 GitHub：[github.com/your-username]
+- 💼 GitHub：[github.com/monkeydtree]
 
 ## 📈 版本历史 | Versionsgeschichte
 
@@ -261,7 +261,7 @@ SOFTWARE.
 
 如果您有任何问题、建议或反馈，欢迎通过以下方式联系：
 
-- 📧 邮箱：[your-email@example.com]
+- 📧 邮箱：[monkeydtree@126.com]
 - 🐛 问题反馈：[GitHub Issues](https://github.com/your-username/your-repo/issues)
 - 💬 讨论：[GitHub Discussions](https://github.com/your-username/your-repo/discussions)
 
